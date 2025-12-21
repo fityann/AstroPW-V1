@@ -18,6 +18,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-muted">Name</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-muted">Email</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-muted">Role</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-muted">Email Verified</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-muted">Registered</th>
                                 <th class="px-6 py-3"></th>
                             </tr>
@@ -28,6 +29,13 @@
                                     <td class="px-6 py-4 text-sm text-app">{{ $user->name }}</td>
                                     <td class="px-6 py-4 text-sm text-muted">{{ $user->email }}</td>
                                     <td class="px-6 py-4 text-sm text-muted">{{ $user->role }}</td>
+                                    <td class="px-6 py-4 text-sm text-muted">
+                                        @if($user->email_verified_at)
+                                            <span class="text-green-600">Verified</span>
+                                        @else
+                                            <span class="text-red-600">Not Verified</span>
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4 text-sm text-muted">{{ $user->created_at->format('Y-m-d') }}</td>
                                     <td class="px-6 py-4 text-right space-x-2">
                                         <a href="{{ route('users.show', $user) }}" class="text-sm text-blue-600 hover:underline">View</a>
