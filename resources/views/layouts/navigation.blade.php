@@ -148,5 +148,27 @@
         <a href="{{ route('users.index') }}"
             class="w-full py-2 px-3 rounded-lg {{ request()->routeIs('users.*') ? 'bg-blue-950 text-white' : 'hover:bg-blue-950 hover:text-white' }}">User
             Management</a>
+
+        <!-- Invitation Management -->
+        <div x-data="{ open: false }" class="w-full">
+            <button @click="open = !open" class="w-full py-2 px-3 rounded-lg text-left flex justify-between items-center {{ request()->routeIs('admin.invitation-templates.*') ? 'bg-blue-950 text-white' : 'hover:bg-blue-950 hover:text-white' }}">
+                <span>Manajemen Undangan</span>
+                <svg class="w-4 h-4 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div x-show="open" x-transition class="mt-2 space-y-2 ml-4">
+                <a href="{{ route('admin.invitation-templates.index', ['type' => 'website']) }}"
+                    class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && request('type') == 'website' ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Undangan Website</a>
+                <a href="{{ route('admin.invitation-templates.index', ['type' => 'print']) }}"
+                    class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && request('type') == 'print' ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Undangan Cetak</a>
+                <a href="{{ route('admin.invitation-templates.index', ['type' => 'video_3d']) }}"
+                    class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && request('type') == 'video_3d' ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Undangan Video 3D</a>
+                <a href="{{ route('admin.invitation-templates.index', ['type' => 'video_greeting']) }}"
+                    class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && request('type') == 'video_greeting' ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Video Ucapan 3D</a>
+                <a href="{{ route('admin.invitation-templates.index') }}"
+                    class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && !request('type') ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Semua Template</a>
+            </div>
+        </div>
     </div>
 </aside>
