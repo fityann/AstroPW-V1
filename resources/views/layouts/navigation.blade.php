@@ -170,5 +170,8 @@
                     class="block py-1 px-3 rounded-lg text-sm {{ request()->routeIs('admin.invitation-templates.index') && !request('type') ? 'bg-blue-900 text-white' : 'hover:bg-blue-900 hover:text-white' }}">Semua Template</a>
             </div>
         </div>
+
+        <a href="{{ route('admin.invitations.index') }}"
+            class="w-full py-2 px-3 rounded-lg {{ request()->routeIs('admin.invitations.*') ? 'bg-blue-950 text-white' : 'hover:bg-blue-950 hover:text-white' }}">Daftar Tamu Undangan</a>
     </div>
 </aside>

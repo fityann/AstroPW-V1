@@ -31,7 +31,8 @@ class InvitationController extends Controller
     public function create()
     {
         $categories = [Invitation::CATEGORY_VIP => 'VIP', Invitation::CATEGORY_REGULAR => 'Regular'];
-        return view('invitations.create', compact('categories'));
+        $themes = \App\Models\InvitationTemplate::all();
+        return view('invitations.create', compact('categories', 'themes'));
     }
 
     /** Store a newly created invitation in storage. */
@@ -59,7 +60,8 @@ class InvitationController extends Controller
     public function edit(Invitation $invitation)
     {
         $categories = [Invitation::CATEGORY_VIP => 'VIP', Invitation::CATEGORY_REGULAR => 'Regular'];
-        return view('invitations.edit', compact('invitation', 'categories'));
+        $themes = \App\Models\InvitationTemplate::all();
+        return view('invitations.edit', compact('invitation', 'categories', 'themes'));
     }
 
     /** Update the specified invitation in storage. */
@@ -70,11 +72,12 @@ class InvitationController extends Controller
             'email' => 'required|email|unique:invitations,email,' . $invitation->id,
             'phone' => 'nullable|string|max:20',
             'category' => 'required|in:vip,regular',
+            'theme_id' => 'nullable|exists:invitation_templates,id',
         ]);
 
         $invitation->update($data);
 
-        return redirect()->route('invitations.index')->with('success', 'Undangan berhasil diperbarui.');
+        return redirect()->route('admin.invitations.index')->with('success', 'Undangan berhasil diperbarui.');
     }
 
     /** Remove the specified invitation from storage. */

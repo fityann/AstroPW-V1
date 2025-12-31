@@ -28,6 +28,8 @@ Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor
             Route::resource('vendors', App\Http\Controllers\VendorController::class);
             // Invitation templates management
             Route::resource('invitation-templates', InvitationTemplateController::class);
+            // Invitations management
+            Route::resource('invitations', App\Http\Controllers\InvitationController::class);
         });
     });
 

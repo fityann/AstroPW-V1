@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-semibold text-app">Tambah Template Undangan</h1>
             </div>
 
-            <div class="bg-white rounded-lg shadow p-6">
+            <div class="bg-white rounded-lg shadow panel p-6">
                 <form action="{{ route('admin.invitation-templates.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 

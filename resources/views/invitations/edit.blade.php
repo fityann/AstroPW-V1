@@ -3,11 +3,11 @@
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6">
                 <h1 class="text-2xl font-semibold text-app">Edit Undangan</h1>
-                <a href="{{ route('invitations.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Kembali</a>
+                <a href="{{ route('admin.invitations.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Kembali</a>
             </div>
 
             <div class="panel rounded-lg shadow p-6">
-                <form action="{{ route('invitations.update', $invitation) }}" method="POST">
+                <form action="{{ route('admin.invitations.update', $invitation) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-6">
-                        <a href="{{ route('invitations.index') }}" class="mr-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Batal</a>
+                        <a href="{{ route('admin.invitations.index') }}" class="mr-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Batal</a>
                         <x-primary-button>Simpan Perubahan</x-primary-button>
                     </div>
                 </form>
